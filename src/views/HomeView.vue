@@ -17,10 +17,30 @@ import './../assets/home.css';
       </nav>
     </header>
   <main class="main">
-    <div class="feature">FEATURED POST</div>
-    <div>
-      <h1>RAIN OF THOUGHT</h1>
-      <ul>
+    <div class="feature">
+      <div class="featureImg">이미지 들어갈 자리</div>
+      <div class="latestMain">메인 들어갈 자리임</div>
+    </div>
+  </main>
+  <main class="maintwo">
+    <h1>RAIN OF THOUGHT</h1>
+    <ul>
+        <li>블로그 포스트 목록</li>
+        <li>블로그 포스트 목록</li>
+        <li>블로그 포스트 목록</li>
+        <li>블로그 포스트 목록</li>
+        <li>블로그 포스트 목록</li>
+        <li>블로그 포스트 목록</li>
+        <li>블로그 포스트 목록</li>
+        <li>블로그 포스트 목록</li>
+        <li>블로그 포스트 목록</li>
+        <li>블로그 포스트 목록</li>
+        <li>블로그 포스트 목록</li>
+        <li>블로그 포스트 목록</li>
+        <li>블로그 포스트 목록</li>
+        <li>블로그 포스트 목록</li>
+        <li>블로그 포스트 목록</li>
+        <li>블로그 포스트 목록</li>
         <li>블로그 포스트 목록</li>
         <li>블로그 포스트 목록</li>
         <li>블로그 포스트 목록</li>
@@ -30,7 +50,7 @@ import './../assets/home.css';
         <li>블로그 포스트 목록</li>
         <li>블로그 포스트 목록</li>
       </ul>
-    </div>
+
   </main>
   <footer class="footer">
     내가 제작했습니다

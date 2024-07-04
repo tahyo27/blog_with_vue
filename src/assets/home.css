@@ -12,23 +12,50 @@
 .nav {
     display: flex;
     justify-content: center;
-    gap: 10em;
     border: 1px solid black;
+    height: 3.5em;
+    border-left: none;
+    border-right: none;
 }
 
-.feature {
+.nav div {
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    height: 100%;
+    width: 12em;
+    border: 1px solid black;
+    border-right: none;
+    border-bottom: none;
+    border-top: none;
+}
+
+.nav div:first-child {
+    border-left: none;
+}
+.main {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 50em;
+    height: 60em;
+    width:100%;
+    border-bottom: 1px solid black;
 }
 
-main li {
+.feature {
+    height: 70%;
+    width: 50%;
+    border: 1px solid black;
+}
+
+
+.maintwo li {
     background-color: #fff;
     margin: 1em 0;
     padding: 1em;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
 
 .footer {
     display: flex;
