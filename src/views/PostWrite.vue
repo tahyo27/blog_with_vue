@@ -1,17 +1,21 @@
 <template>
-  <div>
+  <div class="form-container">
     <h1>인서트페이지</h1>
-    <form @submit.prevent="saveBoard">
-      <label for="title">Title:</label>
-      <input v-model="title" type="text" id="title" name="title" required />
-      <br /><br />
-      <label for="author">Author:</label>
-      <input v-model="author" type="text" id="author" name="author" required />
+    <form @submit.prevent="saveBoard" class="board-form">
+      <div class="form-group">
+        <label for="title">Title:</label>
+        <input v-model="title" type="text" id="title" name="title" required />
+      </div>
+
+      <div class="form-group">
+        <label for="author">Author:</label>
+        <input v-model="author" type="text" id="author" name="author" required />
+      </div>
     </form>
 
-    <div ref="editorElement"></div>
-    <div>
-      <button type="button" @click="saveBoard">저장</button>
+    <div ref="editorElement" class="editor"></div>
+    <div class="button-container">
+      <button type="button" @click="saveBoard" class="save-button">저장</button>
     </div>
   </div>
 </template>
@@ -101,6 +105,82 @@ export default {
 };
 </script>
 
+
 <style scoped>
-/* 필요에 따라 스타일 추가 */
+.form-container {
+  max-width: 600px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  text-align: center;
+  font-size: 2em;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.board-form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  font-size: 1.1em;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+input[type="text"] {
+  padding: 10px;
+  font-size: 1em;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);
+  transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+  border-color: #007BFF;
+  outline: none;
+}
+
+.editor {
+  min-height: 150px;
+  padding: 10px;
+  margin-top: 20px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+}
+
+.button-container {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.save-button {
+  padding: 10px 20px;
+  font-size: 1.2em;
+  color: #fff;
+  background-color: #007BFF;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.save-button:hover {
+  background-color: #0056b3;
+}
 </style>
