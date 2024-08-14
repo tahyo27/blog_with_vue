@@ -1,5 +1,19 @@
 <script setup>
 import './../assets/home.css';
+
+import { ref, onMounted } from 'vue'
+import axios from 'axios'
+
+const posts = ref([])
+
+onMounted(async () => {
+  try {
+    const response = await axios.get('http://localhost:8072/posts')
+    posts.value = response.data
+  } catch (error) {
+    console.error('Error fetching posts:', error)
+  }
+})
 </script>
 
 <template>
@@ -25,31 +39,10 @@ import './../assets/home.css';
   <main class="maintwo">
     <h1>RAIN OF THOUGHT</h1>
     <ul>
-        <li>블로그 포스트 목록</li>
-        <li>블로그 포스트 목록</li>
-        <li>블로그 포스트 목록</li>
-        <li>블로그 포스트 목록</li>
-        <li>블로그 포스트 목록</li>
-        <li>블로그 포스트 목록</li>
-        <li>블로그 포스트 목록</li>
-        <li>블로그 포스트 목록</li>
-        <li>블로그 포스트 목록</li>
-        <li>블로그 포스트 목록</li>
-        <li>블로그 포스트 목록</li>
-        <li>블로그 포스트 목록</li>
-        <li>블로그 포스트 목록</li>
-        <li>블로그 포스트 목록</li>
-        <li>블로그 포스트 목록</li>
-        <li>블로그 포스트 목록</li>
-        <li>블로그 포스트 목록</li>
-        <li>블로그 포스트 목록</li>
-        <li>블로그 포스트 목록</li>
-        <li>블로그 포스트 목록</li>
-        <li>블로그 포스트 목록</li>
-        <li>블로그 포스트 목록</li>
-        <li>블로그 포스트 목록</li>
-        <li>블로그 포스트 목록</li>
-      </ul>
+      <li v-for="post in posts" :key="post.id">{{ post.title }}</li>
+    </ul>
+      
+  
 
   </main>
   <footer class="footer">
