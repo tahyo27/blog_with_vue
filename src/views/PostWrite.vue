@@ -47,7 +47,7 @@ export default {
                 formData.append('file', blob, blob.name);
 
                 try {
-                  const response = await fetch('/image/temp', {
+                  const response = await fetch('http://localhost:8072/temp/image', {
                     method: 'POST',
                     body: formData,
                   });
@@ -57,6 +57,7 @@ export default {
                   }
 
                   const data = await response.json();
+                  console.log("이미지 파일 url", data.url)
                   callback(data.url);
                 } catch (error) {
                   console.error('Error:', error);
