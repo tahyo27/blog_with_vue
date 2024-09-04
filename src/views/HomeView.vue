@@ -37,6 +37,26 @@ const truncatedContent = computed(() => {
   return textContent.length > 10 ? textContent.slice(0, 10) + '...' : textContent; //몇글자 제한할지 고민
 });
 
+const postDivide = (content) => {
+  if (!content) return { imageHtml: '', text: '' }; //디폴트 이미지와 글자 나중에 넣기
+
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = content;
+
+  
+  const firstImage = tempDiv.querySelector('img');
+  const imageHtml = firstImage ? firstImage.outerHTML : ''; //디폴트 이미지 넣을 생각
+
+  const textContent = Array.from(tempDiv.querySelectorAll('p'))
+    .filter(p => !p.querySelector('img'))
+    .map(p => p.textContent)
+    .join(' ');
+
+  const truncatedText = textContent.length > 10 ? textContent.slice(0, 10) + '...' : textContent;
+
+  return { imageHtml, text: truncatedText };
+};
+
 onMounted(async () => {
   try {
     const response = await axios.get('http://localhost:8072/posts')
@@ -78,8 +98,10 @@ onMounted(async () => {
     <h1>TRAIN OF THOUGHT</h1>
     <ul>
       <li v-for="post in remainingPosts" :key="post.id">
-        <h3>{{ post.title }}</h3>
-        <p v-html="post.content"></p>
+        <div class="image-container" v-html="postDivide(post.content).imageHtml"></div>
+        <div class="text-container">
+          <p>{{ postDivide(post.content).text }}</p>
+        </div>
       </li>
     </ul>
       
