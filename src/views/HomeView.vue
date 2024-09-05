@@ -2,7 +2,7 @@
 import './../assets/home.css';
 import { ref, onMounted, computed } from 'vue';
 import axios from 'axios'
-
+// 타이틀 제목도 길면 자를 생각 하기
 const posts = ref([])
 
 const latestPost = computed(() => {
@@ -100,6 +100,7 @@ onMounted(async () => {
       <li v-for="post in remainingPosts" :key="post.id">
         <div class="image-container" v-html="postDivide(post.content).imageHtml"></div>
         <div class="text-container">
+          <h1>{{ post.title }}</h1>
           <p>{{ postDivide(post.content).text }}</p>
         </div>
       </li>
