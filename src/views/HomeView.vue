@@ -1,5 +1,6 @@
 <script setup>
 import './../assets/home.css';
+import { RouterLink, RouterView } from 'vue-router'
 import { ref, onMounted, computed } from 'vue';
 import axios from 'axios'
 // 타이틀 제목도 길면 자를 생각 하기
@@ -77,12 +78,10 @@ onMounted(async () => {
       <span>EVERYTHING IS PERSONAL. INCLUDING THIS BLOG.</span>
       <h1>Train of Thought</h1>
       <nav class="nav">
-        <div>Home</div>
-        <div>About</div>
-        <div>My Blog</div>
-        <div>Contact</div>
-        <div>Search</div>
-        <div>SNS</div>
+        <div><RouterLink to="/">Home</RouterLink></div>
+        <div><RouterLink to="/about">About</RouterLink></div>
+        <div><RouterLink to="/write">My Blog(write)</RouterLink></div>
+        <div><RouterLink to="/select">Select</RouterLink></div>
       </nav>
     </header>
   <main class="main">
@@ -114,5 +113,7 @@ onMounted(async () => {
 
   </footer>
   </div>
+
+  <RouterView />
 </template>
 
