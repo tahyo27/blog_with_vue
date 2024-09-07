@@ -43,12 +43,37 @@
     border-bottom: 1px solid black;
 }
 
+
+
 .feature {
-    height: 70%;
+    display: flex;
+    flex-direction: column;
+    height: 65%;
     width: 50%;
     border: 1px solid black;
 }
 
+.featureImg {
+    flex: 0 1 auto; 
+}
+.featureImg img {
+    width: 100%;
+    height: 100%; /* featureImg의 전체 높이 채우게 */
+    object-fit: cover;
+}
+
+.latestMain {
+    flex: 0 1 auto; 
+    padding: 10px; 
+    overflow: auto; 
+}
+
+.maintwo {
+    display: flex;
+    justify-content: space-between;
+    align-content: flex-start;
+    width: 100%;
+}
 
 .maintwo li {
     background-color: #fff;
@@ -81,6 +106,22 @@
     flex-direction: column;
     justify-content: flex-start;
 }
+.maintwoTrain {
+    margin-left: 9rem;
+}
+
+.mainLeft {
+    flex: 3; 
+    padding: 20px; 
+    box-sizing: border-box; 
+  }
+  
+  .mainRight {
+    flex: 1; 
+    padding: 20px; 
+    box-sizing: border-box; 
+  }
+
 
 .footer {
     display: flex;

@@ -35,7 +35,7 @@ const truncatedContent = computed(() => {
     .map(p => p.textContent)
     .join(' '); // <p></p> 태그 속 img없는 텍스트 추출해서 합침
 
-  return textContent.length > 10 ? textContent.slice(0, 10) + '...' : textContent; //몇글자 제한할지 고민
+  return textContent.length > 20 ? textContent.slice(0, 20) + '...' : textContent; //몇글자 제한할지 고민
 });
 
 const postDivide = (content) => {
@@ -94,7 +94,10 @@ onMounted(async () => {
     </div>
   </main>
   <main class="maintwo">
-    <h1>TRAIN OF THOUGHT</h1>
+    <div class="mainLeft">
+      <div class="maintwoTrain">
+        <h1>TRAIN OF THOUGHT</h1>
+      </div>
     <ul>
       <li v-for="post in remainingPosts" :key="post.id">
         <div class="image-container" v-html="postDivide(post.content).imageHtml"></div>
@@ -104,10 +107,15 @@ onMounted(async () => {
         </div>
       </li>
     </ul>
+  </div>
+    
+  <div class="mainRight">
+    <div>about me</div>
+  </div>
       
-  
-
   </main>
+
+  
   <footer class="footer">
     <div> 밑에 하단 푸터부분 나중에 만들어야함</div>
 
