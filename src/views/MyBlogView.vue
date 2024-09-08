@@ -1,0 +1,84 @@
+<script setup>
+import './../assets/myblog.css';
+import { RouterLink, RouterView } from 'vue-router'
+import { ref, onMounted, computed } from 'vue';
+import axios from 'axios'
+// 타이틀 제목도 길면 자를 생각 하기
+const posts = ref([])
+
+
+const postDivide = (content) => {
+  if (!content) return { imageHtml: '', text: '' }; //디폴트 이미지와 글자 나중에 넣기
+
+  const tempDiv = document.createElement('div');
+  tempDiv.innerHTML = content;
+
+  
+  const firstImage = tempDiv.querySelector('img');
+  const imageHtml = firstImage ? firstImage.outerHTML : ''; //디폴트 이미지 넣을 생각
+
+  const textContent = Array.from(tempDiv.querySelectorAll('p'))
+    .filter(p => !p.querySelector('img'))
+    .map(p => p.textContent)
+    .join(' ');
+
+  const truncatedText = textContent.length > 15 ? textContent.slice(0, 10) + '...' : textContent;
+
+  return { imageHtml, text: truncatedText };
+};
+
+onMounted(async () => {
+  try {
+    const response = await axios.get('http://localhost:8072/posts')
+    posts.value = response.data
+    console.log(response.data);
+  } catch (error) {
+    console.error('Error fetching posts:', error)
+  }
+ 
+})
+
+
+</script>
+
+
+<template>
+ <div>
+    <header class="myblog-header">
+      <span>EVERYTHING IS PERSONAL. INCLUDING THIS BLOG.</span>
+      <h1>Train of Thought</h1>
+      <nav class="myblog-nav">
+        <div><RouterLink to="/">Home</RouterLink></div>
+        <div><RouterLink to="/about">About</RouterLink></div>
+        <div><RouterLink to="/myblog">My Blog</RouterLink></div>
+        <div><RouterLink to="/write">My Blog(write)</RouterLink></div>
+        <div><RouterLink to="/select">Select</RouterLink></div>
+      </nav>
+      
+      <RouterView />
+    </header>
+  <main class="myblog-main">
+    <div class="myblog-list">
+      <ul>
+      <li v-for="post in posts" :key="post.id">
+        <div class="myblog-image-container" v-html="postDivide(post.content).imageHtml"></div>
+        <div class="myblog-text-container">
+          <h1>{{ post.title }}</h1>
+          <p>{{ postDivide(post.content).text }}</p>
+        </div>
+      </li>
+    </ul>
+    </div>
+  </main>
+  
+  <footer class="myblog-footer">
+    <div> 밑에 하단 푸터부분 나중에 만들어야함</div>
+
+  </footer>
+  </div>
+
+</template>
+
+<style>
+
+</style>

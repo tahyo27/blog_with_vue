@@ -1,0 +1,108 @@
+.myblog-header {
+    text-align: center;
+    margin-bottom: 10rem;
+}
+.myblog-header span {
+    font-size: 2.1rem;
+}
+.myblog-header h1 {
+    margin-top: 10px;
+    font-size: 7rem;
+}
+
+.myblog-nav {
+    display: flex;
+    justify-content: center;
+    border: 1px solid black;
+    height: 3.5rem;
+    border-left: none;
+    border-right: none;
+}
+
+.myblog-nav div {
+    display: flex;
+    align-items: center; 
+    justify-content: center; 
+    height: 100%;
+    width: 12rem;
+    border: 1px solid black;
+    border-right: none;
+    border-bottom: none;
+    border-top: none;
+}
+
+.myblog-nav div:first-child {
+    border-left: none;
+}
+
+.myblog-main {
+    display: flex;
+    justify-content: center;
+}
+  
+.myblog-list {
+    display: flex;
+    width: 70%;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* 카드 사이의 간격 */
+}
+  
+.myblog-list ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px; /* 아이템 간격 */
+}
+  
+.myblog-list li {
+    width: calc(50% - 13rem); /* 두 개씩 배치: 45% 너비로 설정하고 간격 제외 */
+    max-width: 80%; /* 최대 80%까지만 확장 */
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 20px; /* 아래쪽 간격 */
+    background-color: white; /* 박스 배경색 */
+    border: 1px solid #ddd; /* 박스 테두리 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 박스 그림자 */
+    border-radius: 10px; /* 모서리 둥글게 */
+    overflow: hidden; /* 내용물이 박스에서 넘치지 않도록 */
+}
+  
+.myblog-image-container {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom: 1px solid #ddd; /* 이미지 아래 구분선 */
+}
+  
+.myblog-image-container img {
+    width: 100%;
+    height: auto; /* 이미지의 원래 비율을 유지하면서 크기 조정 */
+}
+  
+.myblog-text-container {
+    text-align: center;
+    padding: 20px;
+}
+  
+.myblog-list h1 {
+    font-size: 1.5em;
+    margin: 10px 0;
+}
+  
+.myblog-list p {
+    font-size: 1em;
+    color: #555;
+}
+
+.myblog-footer {
+    margin-top: 35rem;
+    display: flex;
+    height: 10rem;
+    justify-content: center;
+}

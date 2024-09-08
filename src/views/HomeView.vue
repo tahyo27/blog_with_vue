@@ -80,6 +80,7 @@ onMounted(async () => {
       <nav class="nav">
         <div><RouterLink to="/">Home</RouterLink></div>
         <div><RouterLink to="/about">About</RouterLink></div>
+        <div><RouterLink to="/myblog">My Blog</RouterLink></div>
         <div><RouterLink to="/write">My Blog(write)</RouterLink></div>
         <div><RouterLink to="/select">Select</RouterLink></div>
       </nav>
