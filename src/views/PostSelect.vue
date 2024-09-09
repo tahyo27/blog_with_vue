@@ -1,7 +1,10 @@
 <script setup>
 import './../assets/select.css';
 import { ref, onMounted } from 'vue';
+import { useRoute } from 'vue-router';
 import axios from 'axios';
+
+const route = useRoute();
 
 const post = ref({
   id: '',
@@ -12,7 +15,7 @@ const post = ref({
 // API 호출 함수 정의
 const fetchPost = async () => {
     console.log("API호출");
-  const postId = 1000004; 
+    const postId = route.params.id;
   try {
     const response = await axios.get(`http://localhost:8072/posts/${postId}`); // 나중에 홈에서 클릭하면 포스트아이디 들어가게 변경
     post.value = response.data; 

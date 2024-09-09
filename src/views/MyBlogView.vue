@@ -1,11 +1,13 @@
 <script setup>
 import './../assets/myblog.css';
-import { RouterLink, RouterView } from 'vue-router'
+import { RouterLink, RouterView, useRouter } from 'vue-router'
 import { ref, onMounted, computed } from 'vue';
 import axios from 'axios'
 // 타이틀 제목도 길면 자를 생각 하기
 const posts = ref([])
 
+
+const router = useRouter();
 
 const postDivide = (content) => {
   if (!content) return { imageHtml: '', text: '' }; //디폴트 이미지와 글자 나중에 넣기
@@ -15,7 +17,7 @@ const postDivide = (content) => {
 
   
   const firstImage = tempDiv.querySelector('img');
-  const imageHtml = firstImage ? firstImage.outerHTML : ''; //디폴트 이미지 넣을 생각
+  const imageHtml = firstImage ? firstImage.outerHTML : '<img src="https://via.placeholder.com/150?text=No+Image+Available" alt="No Image" />'; //디폴트 이미지 넣을 생각
 
   const textContent = Array.from(tempDiv.querySelectorAll('p'))
     .filter(p => !p.querySelector('img'))
@@ -25,6 +27,10 @@ const postDivide = (content) => {
   const truncatedText = textContent.length > 15 ? textContent.slice(0, 10) + '...' : textContent;
 
   return { imageHtml, text: truncatedText };
+};
+
+const goToPostDetail = (id) => {
+  router.push({ name: 'select', params: { id } });
 };
 
 onMounted(async () => {
@@ -60,7 +66,7 @@ onMounted(async () => {
   <main class="myblog-main">
     <div class="myblog-list">
       <ul>
-      <li v-for="post in posts" :key="post.id">
+      <li v-for="post in posts" :key="post.id" @click="() => goToPostDetail(post.id)">
         <div class="myblog-image-container" v-html="postDivide(post.content).imageHtml"></div>
         <div class="myblog-text-container">
           <h1>{{ post.title }}</h1>
