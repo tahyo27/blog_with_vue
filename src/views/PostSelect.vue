@@ -32,10 +32,10 @@ onMounted(fetchPost);
 
 <template>
   <div>
-    <header class="header">
+    <header class="select-header">
       <span>EVERYTHING IS PERSONAL. INCLUDING THIS BLOG.</span>
       <h1>Train of Thought</h1>
-      <nav class="nav">
+      <nav class="select-nav">
         <div>Home</div>
         <div>About</div>
         <div>My Blog</div>
@@ -44,12 +44,14 @@ onMounted(fetchPost);
         <div>SNS</div>
       </nav>
     </header>
-  <main class="main">
-    <div class="feature">
+  <main class="select-main">
+    <div class="select-post-nav">all post</div>
+    <div class="select-feature">
+        <h1>{{ post.title }}</h1>
         <div v-html="post.content"></div>
     </div>
   </main>
-  <footer class="footer">
+  <footer class="select-footer">
     내가 제작했습니다
 
   </footer>
