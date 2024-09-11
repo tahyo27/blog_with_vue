@@ -74,17 +74,6 @@ onMounted(async () => {
 
 <template>
   <div>
-    <header class="header">
-      <span>EVERYTHING IS PERSONAL. INCLUDING THIS BLOG.</span>
-      <h1>Train of Thought</h1>
-      <nav class="nav">
-        <div><RouterLink to="/">Home</RouterLink></div>
-        <div><RouterLink to="/about">About</RouterLink></div>
-        <div><RouterLink to="/myblog">My Blog</RouterLink></div>
-        <div><RouterLink to="/write">My Blog(write)</RouterLink></div>
-        <div><RouterLink to="/select">Select</RouterLink></div>
-      </nav>
-    </header>
   <main class="main">
     <div class="feature">
       <div class="featureImg" v-html="latestImageHtml"></div>

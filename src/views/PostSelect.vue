@@ -32,18 +32,6 @@ onMounted(fetchPost);
 
 <template>
   <div>
-    <header class="select-header">
-      <span>EVERYTHING IS PERSONAL. INCLUDING THIS BLOG.</span>
-      <h1>Train of Thought</h1>
-      <nav class="select-nav">
-        <div>Home</div>
-        <div>About</div>
-        <div>My Blog</div>
-        <div>Contact</div>
-        <div>Search</div>
-        <div>SNS</div>
-      </nav>
-    </header>
   <main class="select-main">
     <div class="select-post-nav">all post</div>
     <div class="select-feature">
