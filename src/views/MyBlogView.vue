@@ -63,11 +63,6 @@ onMounted(async () => {
     </ul>
     </div>
   </main>
-  
-  <footer class="myblog-footer">
-    <div> 밑에 하단 푸터부분 나중에 만들어야함</div>
-
-  </footer>
   </div>
 
 </template>

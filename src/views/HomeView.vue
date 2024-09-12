@@ -105,11 +105,6 @@ onMounted(async () => {
       
   </main>
 
-  
-  <footer class="footer">
-    <div> 밑에 하단 푸터부분 나중에 만들어야함</div>
-
-  </footer>
   </div>
 
   <RouterView />

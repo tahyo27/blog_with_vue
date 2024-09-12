@@ -39,10 +39,6 @@ onMounted(fetchPost);
         <div v-html="post.content"></div>
     </div>
   </main>
-  <footer class="select-footer">
-    내가 제작했습니다
-
-  </footer>
   </div>
 </template>
 

@@ -9,9 +9,7 @@
     width:100%;
     margin-bottom: 20rem;
 }
-.select-post-nav {
-    margin-top: 7rem;
-}
+
 .select-feature {
     display: flex;
     flex-direction: column;
@@ -21,12 +19,18 @@
     height: 70%;
     width: 50%;
     border: 1px solid black;
+    box-sizing: border-box;
 }
 
+.select-feature h1 {
+    margin: 0;
+    width: 100%;
+    text-align: center;
+}
 
-
-.select-footer {
-    display: flex;
-    height: 10em;
-    justify-content: center;
+.select-feature div[v-html] {
+    flex-grow: 1; /* 내용이 남은 공간을 모두 채우도록 */
+    width: 100%; /* 전체 폭을 차지하도록 */
+    overflow-y: auto; /* 내용이 넘칠 경우 스크롤 가능하게 설정 */
+    display: block;
 }
