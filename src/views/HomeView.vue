@@ -101,6 +101,14 @@ onMounted(async () => {
     
   <div class="mainRight">
     <div>about me</div>
+    <div>사진 들어갈 자리</div>
+    <div>간단한 소개 들어갈 자리</div>
+    <div>------------------보더 하단 처리</div>
+    <RouterLink to="/about">Read more</RouterLink>
+    <div>my pick of month</div>
+    <div>책 사진 들어갈 자리</div>
+    <div>내용 들어갈 자리</div>
+
   </div>
       
   </main>
