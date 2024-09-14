@@ -84,7 +84,7 @@ onMounted(async () => {
     </div>
   </main>
   <main class="maintwo">
-    <div class="mainLeft">
+    <div class="main-left">
       <div class="maintwoTrain">
         <h1>TRAIN OF THOUGHT</h1>
       </div>
@@ -99,21 +99,28 @@ onMounted(async () => {
     </ul>
   </div>
     
-  <div class="mainRight">
-    <div>about me</div>
-    <div>사진 들어갈 자리</div>
-    <div>간단한 소개 들어갈 자리</div>
-    <div>------------------보더 하단 처리</div>
-    <RouterLink to="/about">Read more</RouterLink>
-    <div>my pick of month</div>
-    <div>책 사진 들어갈 자리</div>
-    <div>내용 들어갈 자리</div>
+  <div class="main-right">
+    <div class="right-about">
+      <h1>ABOUT ME</h1>
+      <div><img src="../../public/고라파덕.webp"></div>
+      <div><p>TH의 블로그입니다. 만들면서 여러 공부를 하는 블로그입니다.</p>
+      </div>
+      <div class="right-read">
+        <RouterLink to="/about">Read More ></RouterLink>
+      </div>     
+    </div>
+  
+    <div class="right-about-bottom">
+      <h1>MY PICK OF MONTH</h1>
+      <div><img src="../../public/book.jpg"></div>
+      <div><p>이번 달 픽은 없습니다.</p></div>
+    </div>
 
   </div>
       
   </main>
 
-  </div>
+</div>
 
   <RouterView />
 </template>
