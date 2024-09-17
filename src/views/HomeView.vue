@@ -70,7 +70,7 @@ const postDivide = (content) => {
  
 // })
 
-// 최초 로드 시 게시물 가져오기
+// 로드 시 게시물 가져오기
 onMounted(async () => {
   await loadPosts();
 });
@@ -128,7 +128,7 @@ const loadMore = async () => {
         </li>
       </ul>
 
-        <button class="plus-button" @click="loadMore">테스트 버튼</button>
+        <button class="plus-button" @click="loadMore">포스트 더보기</button>
       </div>
     
     <div class="main-right">

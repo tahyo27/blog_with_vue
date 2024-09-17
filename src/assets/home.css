@@ -130,6 +130,26 @@
     font-size: 2rem;
 }
 
+.plus-button {
+    background-color: black;
+    border: none; 
+    color: white; 
+    padding: 15px 32px; 
+    text-align: center;
+    text-decoration: none; 
+    display: inline-block; 
+    font-size: 16px; 
+    margin-top: 1rem;
+    margin-left: 10rem;
+    cursor: pointer; 
+    border-radius: 8px; 
+    transition: background-color 0.3s ease; 
+  }
+  
+  .plus-button:hover {
+    background-color: gray;
+  }
+
 .footer {
     display: flex;
     height: 10rem;
