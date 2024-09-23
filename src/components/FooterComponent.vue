@@ -10,7 +10,7 @@ const message = ref('');
 // Submit function
 const submitForm = async () => {
   try {
-    const response = await axios.post('http://localhost:8072/sendemail', {
+    const response = await axios.post('http://localhost:8072/sendmail', {
       name: name.value,
       email: email.value,
       message: message.value

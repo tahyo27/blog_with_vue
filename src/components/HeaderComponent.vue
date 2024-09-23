@@ -1,3 +1,15 @@
+<script setup>
+import { ref } from 'vue';
+
+// 페이지 맨 아래로 스크롤하는 함수
+const scrollToBottom = () => {
+  window.scrollTo({
+    top: document.documentElement.scrollHeight,
+    behavior: 'smooth' // 부드럽게 스크롤
+  });
+};
+</script>
+
 <template>
     <header class="myblog-header">
       <span>EVERYTHING IS PERSONAL. INCLUDING THIS BLOG.</span>
@@ -7,7 +19,9 @@
         <div><RouterLink to="/about">About</RouterLink></div>
         <div><RouterLink to="/myblog">My Blog</RouterLink></div>
         <div><RouterLink to="/write">My Blog(write)</RouterLink></div>
-        <div><RouterLink to="/write">Contact</RouterLink></div>
+        <div @click="scrollToBottom" class="contact-div">
+            Contact
+        </div>
         <div><RouterLink to="/select">Select</RouterLink></div>
       </nav>
     </header>
@@ -50,6 +64,10 @@
 
 .myblog-nav div:first-child {
     border-left: none;
+}
+
+.contact-div {
+  cursor: pointer;
 }
 
 </style>
