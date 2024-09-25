@@ -22,7 +22,7 @@ const scrollToBottom = () => {
         <div @click="scrollToBottom" class="contact-div">
             Contact
         </div>
-        <div><RouterLink to="/select">Select</RouterLink></div>
+        <div><RouterLink to="/login">Log In</RouterLink></div>
       </nav>
     </header>
 </template>
