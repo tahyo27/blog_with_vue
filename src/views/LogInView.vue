@@ -1,16 +1,40 @@
 
 <script setup>
 import { ref } from 'vue'
+import axios from 'axios'
 
 // 사용자 입력을 위한 반응형 변수들
-const username = ref('')
+const email = ref('')
 const password = ref('')
 
-// 로그인 처리 함수 (단순 폼 제출 처리만)
-const handleLogin = () => {
-  // 로그인 처리 부분 (실제 동작 없음)
-  console.log('Form submitted:', username.value, password.value)
+// 로그인 처리 함수 
+const handleLogin = async () => {
+  // 로그인 처리 부분 
+  try {
+    const response = await axios.post('http://localhost:8072/auth/login', {
+      email: email.value,
+      password: password.value,
+    });
+    console.log('로그인 성공');
+  } catch (error) {
+    if (error.response) {
+      // 서버가 응답을 보냈으나, 응답 상태 코드가 2xx 범위가 아닐 때 (에러 발생)
+      console.error('에러 응답:', error.response.data);
+      console.error('코드', error.response.status); // 예: 401, 404 등
+      console.error('헤더', error.response.headers);
+    } else if (error.request) {
+      // 요청은 보내졌으나, 서버로부터 응답이 없을 때 (네트워크 또는 CORS 문제)
+      console.error('요청 보냈지만 응답 없음', error.request);
+    } else {
+      // 요청을 설정하는 중에 발생한 에러
+      console.error('요청 설정 중 에러', error.message);
+    }
+  }
+  console.log('폼 보냄');
 }
+
+
+
 </script>
 
 <template>
@@ -23,7 +47,7 @@ const handleLogin = () => {
             <input
                 type="text"
                 id="username"
-                v-model="username"
+                v-model="email"
                 placeholder="Enter your username"
                 required
             />
