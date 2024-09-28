@@ -16,21 +16,31 @@ const handleLogin = async () => {
       password: password.value,
     });
     console.log('로그인 성공');
+    router.push('/');
   } catch (error) {
     if (error.response) {
       // 서버가 응답을 보냈으나, 응답 상태 코드가 2xx 범위가 아닐 때 (에러 발생)
-      console.error('에러 응답:', error.response.data);
-      console.error('코드', error.response.status); // 예: 401, 404 등
-      console.error('헤더', error.response.headers);
+      const errorMessage = `
+        에러 응답: ${JSON.stringify(error.response.data)}\n
+        코드: ${error.response.status}\n
+        헤더: ${JSON.stringify(error.response.headers)}
+        `;
+      console.error(errorMessage);
+      alert(errorMessage);
+
     } else if (error.request) {
       // 요청은 보내졌으나, 서버로부터 응답이 없을 때 (네트워크 또는 CORS 문제)
-      console.error('요청 보냈지만 응답 없음', error.request);
+      const noResponseMessage = '요청 보냈지만 응답 없음: ' + error.request;
+      console.error(noResponseMessage);
+      alert(noResponseMessage);
     } else {
       // 요청을 설정하는 중에 발생한 에러
-      console.error('요청 설정 중 에러', error.message);
+      const generalErrorMessage = '에러 발생: ' + error.message;
+      console.error(generalErrorMessage);
+      alert(generalErrorMessage);
     }
   }
-  console.log('폼 보냄');
+  console.log('폼 제출');
 }
 
 
