@@ -2,10 +2,12 @@
 <script setup>
 import { ref } from 'vue'
 import axios from 'axios'
+import { useRouter } from 'vue-router';
 
 // 사용자 입력을 위한 반응형 변수들
-const email = ref('')
-const password = ref('')
+const email = ref('');
+const password = ref('');
+const router = useRouter();
 
 // 로그인 처리 함수 
 const handleLogin = async () => {
@@ -20,11 +22,8 @@ const handleLogin = async () => {
   } catch (error) {
     if (error.response) {
       // 서버가 응답을 보냈으나, 응답 상태 코드가 2xx 범위가 아닐 때 (에러 발생)
-      const errorMessage = `
-        에러 응답: ${JSON.stringify(error.response.data)}\n
-        코드: ${error.response.status}\n
-        헤더: ${JSON.stringify(error.response.headers)}
-        `;
+      const responseMessage = error?.response?.data?.message || '알 수 없는 오류가 발생했습니다';
+      const errorMessage = ` 코드: ${error.response.status} 메세지 : ${responseMessage}`;
       console.error(errorMessage);
       alert(errorMessage);
 
@@ -39,6 +38,7 @@ const handleLogin = async () => {
       console.error(generalErrorMessage);
       alert(generalErrorMessage);
     }
+    window.location.reload();
   }
   console.log('폼 제출');
 }
