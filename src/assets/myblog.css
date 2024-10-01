@@ -2,6 +2,8 @@
 .myblog-main {
     display: flex;
     justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
   
 .myblog-list {
@@ -61,9 +63,11 @@
     color: #555;
 }
 
-.myblog-footer {
-    margin-top: 35rem;
+.myblog-post-nav {
     display: flex;
-    height: 10rem;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-around;
+    border: 1px solid black;
+    width:30%;
+    margin-right: 10rem;
 }

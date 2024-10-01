@@ -50,7 +50,14 @@ onMounted(async () => {
 
 <template>
  <div>
+  
   <main class="myblog-main">
+    <div class="myblog-post-nav">
+      <div class="category-item">All Posts</div>
+      <div class="category-item">Travel</div>
+      <div class="category-item">My Top 5</div>
+      <div class="category-item">Art & Culture</div>
+    </div>
     <div class="myblog-list">
       <ul>
       <li v-for="post in posts" :key="post.id" @click="() => goToPostDetail(post.id)">
