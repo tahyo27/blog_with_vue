@@ -3,11 +3,13 @@
 import { ref } from 'vue'
 import axios from 'axios'
 import { useRouter } from 'vue-router';
+import { useCookies } from 'vue3-cookies'; // vue-cookies 임포트
 
 // 사용자 입력을 위한 반응형 변수들
 const email = ref('');
 const password = ref('');
 const router = useRouter();
+const { cookies } = useCookies();
 
 // 로그인 처리 함수 
 const handleLogin = async () => {
@@ -17,8 +19,18 @@ const handleLogin = async () => {
       email: email.value,
       password: password.value,
     });
-    console.log('로그인 성공');
+    const token = response.headers['authorization'];
+    const username = response.headers['username'];
+
+    
+    // JWT 토큰을 쿠키에 30분 유효하게 저장
+    //cookies.set('jwtToken', jwtToken, '30min');
+
+    console.log('JWT 토큰 쿠키에 저장 완료, 로그인 성공', token);
+
+    // 홈 페이지로 이동
     router.push('/');
+  
   } catch (error) {
     if (error.response) {
       // 서버가 응답을 보냈으나, 응답 상태 코드가 2xx 범위가 아닐 때 (에러 발생)
