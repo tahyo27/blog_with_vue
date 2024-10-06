@@ -1,5 +1,36 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted } from 'vue';
+import { useCookies } from 'vue3-cookies';
+import { useRouter } from 'vue-router';
+import { useEventBus } from '../utils/LoginEvent.js';
+
+//쿠키 사용
+const { cookies } = useCookies();
+const router = useRouter();
+const eventBus = useEventBus();
+
+
+const username = ref(cookies.get('username') || '');
+const remainingTime = ref(30); // 초기 유효 시간 설정 새로고침하면 유효시간 30으로 바뀌어서 어떻게 바꿀지 생각
+
+const countdown = () => {
+  const interval = setInterval(() => {
+    if (remainingTime.value > 0) {
+      remainingTime.value -= 1; // 남은 시간 줄어들기
+    } else {
+      clearInterval(interval); // 남은 시간이 0이 되면 인터벌 정지
+      cookies.remove('username'); // 쿠키 삭제
+      username.value = null; // username 초기화
+    }
+  }, 60000); // 1분마다 남은 시간 줄어듦
+};
+
+const logout = () => {
+  cookies.remove('jwtToken');
+  cookies.remove('username'); // 쿠키 삭제
+  username.value = null; // username 초기화
+  router.push('/'); //페이지 리디렉션
+};
 
 // 페이지 맨 아래로 스크롤하는 함수
 const scrollToBottom = () => {
@@ -8,6 +39,10 @@ const scrollToBottom = () => {
     behavior: 'smooth' // 부드럽게 스크롤
   });
 };
+
+onMounted(() => {
+  countdown(); // 컴포넌트가 mounted 되었을 때 카운트다운 시작
+});
 </script>
 
 <template>
@@ -23,6 +58,11 @@ const scrollToBottom = () => {
             Contact
         </div>
         <div><RouterLink to="/login">Log In</RouterLink></div>
+        <div v-if="username">
+          <p>환영합니다, {{ username }}</p>
+          <p>남은 유효 시간: {{ remainingTime }}분</p>
+        </div>
+        <button @click="logout">로그아웃</button>
       </nav>
     </header>
 </template>
