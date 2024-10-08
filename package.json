@@ -13,7 +13,7 @@
   "dependencies": {
     "@toast-ui/editor": "^3.2.2",
     "axios": "^1.7.3",
-    "pinia": "^2.1.7",
+    "pinia": "^2.2.4",
     "vue": "^3.4.29",
     "vue-cookies": "^1.8.4",
     "vue-router": "^4.3.3",

@@ -2,16 +2,17 @@
 import { ref, onMounted } from 'vue';
 import { useCookies } from 'vue3-cookies';
 import { useRouter } from 'vue-router';
-import { useEventBus } from '../utils/LoginEvent.js';
+import { useUserStore } from '../stores/userStore';
 
 //쿠키 사용
 const { cookies } = useCookies();
 const router = useRouter();
-const eventBus = useEventBus();
 
-
+const userStore = useUserStore();
+/*
 const username = ref(cookies.get('username') || '');
 const remainingTime = ref(30); // 초기 유효 시간 설정 새로고침하면 유효시간 30으로 바뀌어서 어떻게 바꿀지 생각
+//위에거 제거필요 pinia에서 나중에 관리
 
 const countdown = () => {
   const interval = setInterval(() => {
@@ -31,7 +32,7 @@ const logout = () => {
   username.value = null; // username 초기화
   router.push('/'); //페이지 리디렉션
 };
-
+*/
 // 페이지 맨 아래로 스크롤하는 함수
 const scrollToBottom = () => {
   window.scrollTo({
@@ -40,9 +41,13 @@ const scrollToBottom = () => {
   });
 };
 
-onMounted(() => {
-  countdown(); // 컴포넌트가 mounted 되었을 때 카운트다운 시작
-});
+const logout = () => {
+  userStore.logout(); // 사용자 스토어의 로그아웃 메서드 호출
+};
+
+// onMounted(() => {
+//   countdown(); // 컴포넌트가 mounted 되었을 때 카운트다운 시작
+// });
 </script>
 
 <template>
@@ -58,11 +63,13 @@ onMounted(() => {
             Contact
         </div>
         <div><RouterLink to="/login">Log In</RouterLink></div>
-        <div v-if="username">
-          <p>환영합니다, {{ username }}</p>
-          <p>남은 유효 시간: {{ remainingTime }}분</p>
+        <div>
+          <span v-if="userStore.isLoggedIn">
+            Welcome, {{ userStore.username }}!
+            <button @click="logout">Logout</button>
+          </span>
+          <span v-else>logout상태</span>
         </div>
-        <button @click="logout">로그아웃</button>
       </nav>
     </header>
 </template>

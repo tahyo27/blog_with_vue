@@ -2,13 +2,16 @@
 import { RouterLink, RouterView } from 'vue-router'
 import HeaderComponent from './components/Header.vue';
 import FooterComponent from './components/Footer.vue';
-
-import { useRoute } from 'vue-router'
-import { ref, watchEffect } from 'vue'
+import { useRoute, useRouter  } from 'vue-router'
+import { ref, watchEffect, onMounted } from 'vue'
+import { useUserStore } from './stores/userStore';
 
 // 현재 라우터 정보를 가져옴
 const route = useRoute()
 
+const router = useRouter();
+
+const userStore = useUserStore();
 // 푸터를 숨기고 싶은 경로
 const hideFooterRoutes = ['/write', '/about', '/login']
 
@@ -18,6 +21,11 @@ const showFooter = ref(true)
 watchEffect(() => {
   showFooter.value = !hideFooterRoutes.includes(route.path)
 })
+
+onMounted(() => {
+  userStore.loadUserFromCookie();
+});
+
 </script>
 
 <template>
